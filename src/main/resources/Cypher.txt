@@ -1,0 +1,117 @@
+MATCH (n) DETACH DELETE n
+
+CREATE (m:IO:Pattern { name: "M", actVal: 1, actTime: 1592850863403 }),
+(e:IO:Pattern { name: "E", actVal: 1, actTime: 1592850863403 }),
+(n:IO:Pattern { name: "N", actVal: 1, actTime: 1592850863403 }),
+(t:IO:Pattern { name: "T", actVal: 1, actTime: 1592850863403 }),
+(o:IO:Pattern { name: "O", actVal: 1, actTime: 1592850863403 }),
+(i:IO:Pattern { name: "I", actVal: 1, actTime: 1592850863403 }),
+(h:IO:Pattern { name: "H", actVal: 1, actTime: 1592850863403 }),
+(s:IO:Pattern { name: "S", actVal: 1, actTime: 1592850863403 }),
+(r:IO:Pattern { name: "R", actVal: 1, actTime: 1592850863403 }),
+(terminator:Tech:IO:Pattern { name: "[terminator]", actVal: 1, actTime: 1592850863403 }),
+(space:IO:Delimiter:Pattern { name: "_", actVal: 1, actTime: 1592850863403 }),
+(att:IO:Delimiter:Pattern { name: "!", actVal: 1, actTime: 1592850863403 }),
+(pnt:IO:Delimiter:Pattern { name: ".", actVal: 1, actTime: 1592850863403 }),
+(me:Sequence:Pattern { name: "ME", actVal: 1, actTime: 1592850863403 }),
+(mo:Sequence:Pattern { name: "MO", actVal: 1, actTime: 1592850863403 }),
+(nt:Sequence:Pattern { name: "NT", actVal: 1, actTime: 1592850863403 }),
+(hi:Sequence:Pattern { name: "HI", actVal: 1, actTime: 1592850863403 }),
+(memes:Sequence:Pattern { name: "MEMES", actVal: 1, actTime: 1592850863403 }),
+(memento:Sequence:Pattern { name: "MEMENTO", actVal: 1, actTime: 1592850863403 }),
+(mei:Sequence:Pattern { name: "MEI", actVal: 1, actTime: 1592850863403 }),
+(him:Sequence:Pattern { name: "HIM", actVal: 1, actTime: 1592850863403 }),
+(hir:Sequence:Pattern { name: "HIR", actVal: 1, actTime: 1592850863403 }),
+(moi:Sequence:Pattern { name: "MOI", actVal: 1, actTime: 1592850863403 }),
+(meiorhim:Meaning:Pattern { name: "MEI|HIM", actVal: 1, actTime: 1592850863403 }),
+(mementoMei:Sequence:Pattern { name: "MEMENTO MEI!", actVal: 1, actTime: 1592850863403 }),
+(memesHim:Sequence:Pattern { name: "MEMES MEI|HIM. ", actVal: 1, actTime: 1592850863403 }),
+(m)<-[:ELEMENT {num: 0, weight: 0.002}]-(me),(e)<-[:ELEMENT {num: 1, weight: 0.002}]-(me),
+(m)<-[:ELEMENT {num: 0, weight: 0.002}]-(mo),(o)<-[:ELEMENT {num: 1, weight: 0.001}]-(mo),
+(n)<-[:ELEMENT {num: 0, weight: 0.001}]-(nt),(t)<-[:ELEMENT {num: 1, weight: 0.001}]-(nt),
+(me)<-[:ELEMENT {num: 0, weight: 0.001}]-(memento),(me)<-[:ELEMENT {num: 1, weight: 0.002}]-(memento),
+(nt)<-[:ELEMENT {num: 2, weight: 0.001}]-(memento),(o)<-[:ELEMENT {num: 3, weight: 0.001}]-(memento),
+(me)<-[:ELEMENT {num: 0, weight: 0.001}]-(mei),(i)<-[:ELEMENT {num: 1, weight: 0.001}]-(mei),
+(mo)<-[:ELEMENT {num: 0, weight: 0.001}]-(moi),(i)<-[:ELEMENT {num: 1, weight: 0.001}]-(moi),
+(h)<-[:ELEMENT {num: 0, weight: 0.001}]-(hi),(i)<-[:ELEMENT {num: 1, weight: 0.001}]-(hi),
+(hi)<-[:ELEMENT {num: 0, weight: 0.001}]-(him),(m)<-[:ELEMENT {num: 1, weight: 0.001}]-(him),
+(hi)<-[:ELEMENT {num: 0, weight: 0.001}]-(hir),(r)<-[:ELEMENT {num: 1, weight: 0.001}]-(hir),
+(mei)<-[:SAME {weight: 0.004}]-(meiorhim),(him)<-[:SAME {weight: 0.003}]-(meiorhim),(hir)<-[:SAME {weight: 0.002}]-(meiorhim),(moi)<-[:SAME {weight: 0.001}]-(meiorhim),
+(memento)<-[:ELEMENT {num: 0, weight: 0.001}]-(mementoMei),(space)<-[:ELEMENT {num: 1, weight: 0.001}]-(mementoMei),
+(mei)<-[:ELEMENT {num: 2, weight: 0.001}]-(mementoMei), (att)<-[:ELEMENT {num: 3, weight: 0.001}]-(mementoMei),
+(me)<-[:ELEMENT {num: 0, weight: 0.001}]-(memes),(me)<-[:ELEMENT {num: 1, weight: 0.001}]-(memes),
+(s)<-[:ELEMENT {num: 2, weight: 0.001}]-(memes),(memes)<-[:ELEMENT {num: 0, weight: 0.001}]-(memesHim),
+(space)<-[:ELEMENT {num: 1, weight: 0.001}]-(memesHim),(meiorhim)<-[:ELEMENT {num: 2, weight: 0.001}]-(memesHim),
+(pnt)<-[:ELEMENT {num: 3, weight: 0.001}]-(memesHim),(space)<-[:ELEMENT {num: 4, weight: 0.001}]-(memesHim),
+(timeline:Tech:Sequence:Pattern { name: "[TIMELINE]", actVal: 1, actTime: 1592850863403 }),
+(memesHim)<-[:ELEMENT {num: 0, weight: 0.001}]-(timeline),(mementoMei)<-[:ELEMENT {num: 1, weight: 0.001}]-(timeline),
+(terminator)<-[:ELEMENT {num: 2, weight: 0.001}]-(timeline)
+
+MATCH (n) DETACH DELETE n
+
+CREATE (m:IO:Pattern { name: "M", actVal: 1, actTime: 1592850863403 }),
+(e:IO:Pattern { name: "E", actVal: 1, actTime: 1592850863403 }),
+(n:IO:Pattern { name: "N", actVal: 1, actTime: 1592850863403 }),
+(t:IO:Pattern { name: "T", actVal: 1, actTime: 1592850863403 }),
+(o:IO:Pattern { name: "O", actVal: 1, actTime: 1592850863403 }),
+(i:IO:Pattern { name: "I", actVal: 1, actTime: 1592850863403 }),
+(h:IO:Pattern { name: "H", actVal: 1, actTime: 1592850863403 }),
+(terminator:Tech:IO:Pattern { name: "[terminator]", actVal: 1, actTime: 1592850863403 }),
+(space:IO:Delimiter:Pattern { name: "_", actVal: 1, actTime: 1592850863403 }),
+(att:IO:Delimiter:Pattern { name: "!", actVal: 1, actTime: 1592850863403 }),
+(me:Sequence:Pattern { name: "ME", actVal: 1, actTime: 1592850863403 }),
+(nt:Sequence:Pattern { name: "NT", actVal: 1, actTime: 1592850863403 }),
+(hi:Sequence:Pattern { name: "HI", actVal: 1, actTime: 1592850863403 }),
+(memento:Sequence:Pattern { name: "MEMENTO", actVal: 1, actTime: 1592850863403 }),
+(mei:Sequence:Pattern { name: "MEI", actVal: 1, actTime: 1592850863403 }),
+(him:Sequence:Pattern { name: "HIM", actVal: 1, actTime: 1592850863403 }),
+(meiorhim:Meaning:Pattern { name: "MEI|HIM", actVal: 1, actTime: 1592850863403 }),
+(mementoMei:Sequence:Pattern { name: "MEMENTO MEI!", actVal: 1, actTime: 1592850863403 }),
+(m)<-[:ELEMENT {num: 0, weight: 0.002}]-(me),(e)<-[:ELEMENT {num: 1, weight: 0.002}]-(me),
+(n)<-[:ELEMENT {num: 0, weight: 0.001}]-(nt),(t)<-[:ELEMENT {num: 1, weight: 0.001}]-(nt),
+(me)<-[:ELEMENT {num: 0, weight: 0.001}]-(memento),(me)<-[:ELEMENT {num: 1, weight: 0.002}]-(memento),
+(nt)<-[:ELEMENT {num: 2, weight: 0.001}]-(memento),(o)<-[:ELEMENT {num: 3, weight: 0.001}]-(memento),
+(me)<-[:ELEMENT {num: 0, weight: 0.001}]-(mei),(i)<-[:ELEMENT {num: 1, weight: 0.001}]-(mei),
+(h)<-[:ELEMENT {num: 0, weight: 0.001}]-(hi),(i)<-[:ELEMENT {num: 1, weight: 0.001}]-(hi),
+(hi)<-[:ELEMENT {num: 0, weight: 0.001}]-(him),(m)<-[:ELEMENT {num: 1, weight: 0.001}]-(him),
+(mei)<-[:SAME {weight: 0.004}]-(meiorhim),(him)<-[:SAME {weight: 0.003}]-(meiorhim),
+(memento)<-[:ELEMENT {num: 0, weight: 0.001}]-(mementoMei),(space)<-[:ELEMENT {num: 1, weight: 0.001}]-(mementoMei),
+(mei)<-[:ELEMENT {num: 2, weight: 0.001}]-(mementoMei), (att)<-[:ELEMENT {num: 3, weight: 0.001}]-(mementoMei),
+(timeline:Tech:Sequence:Pattern { name: "[TIMELINE]", actVal: 1, actTime: 1592850863403 }),
+(him)<-[:ELEMENT {num: 0, weight: 0.001}]-(timeline),
+(space)<-[:ELEMENT {num: 1, weight: 0.001}]-(timeline),
+(mementoMei)<-[:ELEMENT {num: 2, weight: 0.001}]-(timeline),
+(terminator)<-[:ELEMENT {num: 3, weight: 0.001}]-(timeline)
+
+MATCH (n) RETURN n
+
+MATCH (el0:Pattern), (el1:Pattern) WHERE id(el0) = 8 AND id(el1) = 9 CREATE (newPattern:Sequence:Pattern {name: "AB"}), (el0)<-[:ELEMENT {num: 0, weight: 0.001}]-(newPattern), (el1)<-[:ELEMENT {num: 1, weight: 0.001}]-(newPattern) RETURN newPattern
+
+MATCH p =(seq)-[r:ELEMENT]->(el)
+WHERE id(seq) = 5 AND r.num >= 3
+FOREACH (r IN relationships(p) | SET r.num = r.num + 1)
+
+MATCH (a {name:"MEI|HIM"})-[r]-(b {name:"MEI"})
+SET r.weight = 0.002
+
+MERGE (n:Pattern {name: 'MEI'})
+SET n.actTime = timestamp(), n.actVal = -1
+RETURN n
+
+MATCH (current:Pattern {name: "MEI|HIM"})-[way]->(pt:Pattern) RETURN pt.name, way.weight, (1+pt.actVal*(10/toFloat(((timestamp()-pt.actTime)/1000)+10))), way.weight*(1+pt.actVal*(10/toFloat(((timestamp()-pt.actTime)/1000)+10))) ORDER BY way.weight*(1+pt.actVal*(10/toFloat(((timestamp()-pt.actTime)/1000)+10))) DESC LIMIT 2
+
+MATCH (msg:IO {name: "N"})<-[:ELEMENT]-(:Pattern)-[:ELEMENT]->(ans:Pattern)
+RETURN ans.name
+
+MATCH p=(blackBox:Pattern {name: "MEI"})-[:ELEMENT *]->(ans:IO)
+WITH ans, COLLECT(p) AS paths
+ORDER BY SIZE(paths) DESC
+RETURN SIZE(paths)
+
+MATCH p=(blackBox:Pattern {name: "MEI|HIM"})-[:ELEMENT|SAME *]->(ans:IO)
+RETURN ans
+
+MATCH (n:Pattern)-[way:ELEMENT]-(:Pattern) WHERE NOT id(way) IN [1,2] RETURN n
+
+MATCH p1=(seq)-[r1:ELEMENT]->(el1), p2=(seq)-[r2:ELEMENT]->(el2) WHERE id(el1)=34 AND id(el2)=33 AND r2.num-r1.num=1 RETURN id(seq), r1.num, id(el1), r2.num, id(el2)
+MATCH p1=()-[r]->(seq)-[r1:ELEMENT]->(el1), p2=(seq)-[r2:ELEMENT]->(el2) WHERE id(el1)=46 AND id(el2)=45 AND r2.num-r1.num=1 RETURN id(seq), r1.num, id(el1), r2.num, id(el2), count(r)
