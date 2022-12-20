@@ -35,17 +35,25 @@ import net.meanings.types.RelationshipType;
  *
  */
 public class Brain implements IBrain {
-	
+	//поощрение
 	private final double encouragementValue = 0.002;
+	//порицание
 	private final double penaltyValue = 0.001;
-	
+	//Глобальные зависимости
 	protected DependencyInjection di;
+	//Путь вверх
 	protected List<PathElement> upPath = null;
+	//Путь вниз
 	protected List<PathElement> downPath = null;
+	//Хранилище распознанных паттернов
 	protected List<Pattern> recognizedPatterns = null;
+	//Распознанные паттерны, подготовленные для записи в БД
 	protected List<Pattern> savedRecognized = new ArrayList<Pattern>();
+	//Наивысший найденный полный паттерн
 	protected Pattern fullPatternUp = null;
+	//Позиция в последовательности полного паттерна
 	protected int fullPatternPosition = -1;
+	//Может ли мозг учиться (записывать в БД новые паттерны)
 	protected boolean canLearn = true;
 	
 	private static final Logger logger = LoggerFactory.getLogger(
@@ -77,36 +85,43 @@ public class Brain implements IBrain {
 		//всегда всё в верхнем регистре
 		message = message.toUpperCase();
 		String pred = "";
-		//getWayUpStrict(findNodeByName(message));
-		//getWayDown(findNodeByName(message), 1, true);
-		
+
+		//Цикл по строке, берём буквы
 		for (int i = 0; i < message.length(); i++) {
+
+			//Находим IO паттерн, соответствующий текущей букве
 			Pattern curPattern = getIOPattern(String.valueOf(message.charAt(i)));
 			
 			logger.info("[perceive] ----"+message.charAt(i)+"----");
-			
+
+			//Если путь вниз не пуст
 			if(!isDownPathEmpty())
-			if(curPattern.equals(getLastDownPathElement().getPattern())) {
-				predictionIsTrue(curPattern);
-				continue;
-			} else {
-				predictionIsFalse(curPattern);
-			}
+				//Если текущий паттерн (буква) является последним элементом в пути вниз
+				if(curPattern.equals(getLastDownPathElement().getPattern())) {
+					//То мы угадали
+					predictionIsTrue(curPattern);
+					//Продолжаем цикл
+					continue;
+				} else {
+					//Иначе предсказание ложно - мы не угадали
+					predictionIsFalse(curPattern);
+				}
 			
 			if(isUpPathEmpty())
 				//приходим сюда если ещё ничего не предсказывали
-			if(buildUpPath(curPattern,null,null)) {
-				logPath(upPath,"upPath");
-				
-				PathElement lastPE = upPath.get(upPath.size()-1);
-				if(buildDownPath(lastPE.getPattern(), lastPE.getWay().getNum(), null, null)) {
-					logPath(downPath,"downPath");
-				} else {
-					savedRecognized.add(curPattern);
-					upPath = null;
+				if(buildUpPath(curPattern,null,null)) {
+					//Выводим в лог путь наверх
+					logPath(upPath,"upPath");
+
+					//Берём последний элемент из пути наверх
+					PathElement lastPE = upPath.get(upPath.size()-1);
+					if(buildDownPath(lastPE.getPattern(), lastPE.getWay().getNum(), null, null)) {
+						logPath(downPath,"downPath");
+					} else {
+						savedRecognized.add(curPattern);
+						upPath = null;
+					}
 				}
-				
-			}
 			
 			if(isDownPathEmpty()) {
 				upPath = null;
