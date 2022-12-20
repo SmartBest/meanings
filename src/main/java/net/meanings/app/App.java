@@ -27,9 +27,11 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		logger.info("--- Meanings-net app start ---");
-        
+
+		//Объект глобальных зависимостей
 		DependencyInjection di = new DependencyInjection("bolt://localhost:7687", "neo4j", "123456");
-		
+
+		//Главный обработчик сигналов
 		IBrain brain = new Brain(di, true);
 		/*String message = "meme";
 		String answer = brain.perceive(message);
@@ -39,11 +41,14 @@ public class App {
 		
 		//logger.info("Nodes: {}", di.QHelper().getAllNodeCount());
 		//logger.info("Relations: {}", di.QHelper().getAllRelationCount());
-		
-		//brain.reset();
-		
-		//readFile("res/test_text3.txt", brain);
-		
+
+		//обнулить БД
+		brain.reset();
+
+		//считываем файл построчно
+		readFile("res/test_text3.txt", brain);
+
+		//режим сна
 		brain.sleep();
 		
 		/*String message = "маша каша наша.";
