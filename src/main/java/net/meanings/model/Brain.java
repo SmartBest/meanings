@@ -39,6 +39,9 @@ public class Brain implements IBrain {
 	private final double encouragementValue = 0.002;
 	//порицание
 	private final double penaltyValue = 0.001;
+	//Ограничительный счетчик
+	private final static int MAX_PREDICTION_FAILED = 2;
+	private int currentPredictionFailedCounter = 0;
 	//Глобальные зависимости
 	protected DependencyInjection di;
 	//Путь вверх
@@ -104,6 +107,21 @@ public class Brain implements IBrain {
 					continue;
 				} else {
 					//Иначе предсказание ложно - мы не угадали
+					//Прроверим ограничительный счетчик
+					if(this.currentPredictionFailedCounter >= this.MAX_PREDICTION_FAILED) {
+						//Запомним то что уже удалось распознать для последующей записи в БД
+						saveRecognizedPatterns();
+						//Сбросим счетчик фейлов
+						this.currentPredictionFailedCounter = 0;
+						upPath = null;
+						downPath = null;
+						savedRecognized.add(curPattern);
+						//Перейдём к следующей букве
+						continue;
+					} else {
+						this.currentPredictionFailedCounter++;
+					}
+					//Продолжим брутфорс
 					predictionIsFalse(curPattern);
 				}
 			
