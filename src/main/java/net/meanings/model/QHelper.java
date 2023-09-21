@@ -274,7 +274,7 @@ public class QHelper {
 		query = query + " WHERE id(toAnalyze)="+seq.get(toAnalyzePos).id()+" AND ";
 		
 		//исключим уже найденные similarities
-		query = query + "size((el"+toAnalyzePos+")<-[:SAME]-()-[:SAME]->(toAnalyze)) = 0 AND ";
+		query = query + "count{(el"+toAnalyzePos+")<-[:SAME]-()-[:SAME]->(toAnalyze)} = 0 AND ";
 		
 		query = query + "id(el"+toAnalyzePos+")<>"+seq.get(toAnalyzePos).id();
 		

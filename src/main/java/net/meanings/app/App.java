@@ -29,7 +29,7 @@ public class App {
 		logger.info("--- Meanings-net app start ---");
 
 		//Объект глобальных зависимостей
-		DependencyInjection di = new DependencyInjection("bolt://localhost:7687", "neo4j", "123456");
+		DependencyInjection di = new DependencyInjection("bolt://localhost:7687", "neo4j", "12345678");
 
 		//Главный обработчик сигналов
 		IBrain brain = new Brain(di, true);
