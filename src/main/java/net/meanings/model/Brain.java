@@ -231,7 +231,7 @@ public class Brain implements IBrain {
 				}
 				len ++;
 			}
-			
+
 			if(toJoin.size()>1) {
 				for (int i=0; i<len; i++) {
 					organizedStructure.remove(pos);
@@ -367,7 +367,7 @@ public class Brain implements IBrain {
 	}
 
 	private Pattern findAndReplace(List<Pattern> toFind) {
-		// TODO Auto-generated method stub
+		logger.info("start--------");
 		String tf = "[findAndReplace] ";
 		for (Pattern r : toFind) {
 			tf = tf + "<"+resolve(r)+">";
@@ -375,13 +375,18 @@ public class Brain implements IBrain {
 		logger.info(tf);
 		
 		if(toFind.size()==0) {
+			logger.info("no disambiguate --------");
 			return null;
 		}
 		
 		Disambiguater da = new Disambiguater(di);
 		
 		Pattern replacer = da.tryToReplace(toFind);
-		
+
+		if(replacer!=null)
+		logger.info("replacer = "+resolve(replacer));
+
+		logger.info("end--------");
 		return replacer;
 	}
 	

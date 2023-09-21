@@ -46,7 +46,7 @@ public class App {
 		brain.reset();
 
 		//считываем файл построчно
-		readFile("res/test_text3.txt", brain);
+		readFile("res/test_text5.txt", brain);
 
 		//режим сна
 		brain.sleep();

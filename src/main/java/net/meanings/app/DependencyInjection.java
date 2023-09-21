@@ -66,7 +66,7 @@ public class DependencyInjection {
 		//Сколько объединять в последовательность (пока не используется!)
 		symbols.setSequenceSize(2);
 		//Минимальное количество таких же последовательностей для выделения в отдельный узел - важно
-		symbols.setMinMatchesToReplace(2);
+		symbols.setMinMatchesToReplace(1);
 
 		//Слова
 		SemanticLevel words = new SemanticLevel("Words", true);
@@ -76,7 +76,7 @@ public class DependencyInjection {
 		words.addDelimitter("_");
 		words.addDelimitter(":");
 		//Минимальное количество таких же последовательностей для выделения в отдельный узел - важно
-		words.setMinMatchesToReplace(3);
+		words.setMinMatchesToReplace(1);
 
 		//Предложения
 		SemanticLevel sentences = new SemanticLevel("Sentences", true);
@@ -85,6 +85,7 @@ public class DependencyInjection {
 		sentences.addDelimitter("!");
 		sentences.addDelimitter("?");
 		sentences.addDelimitter("rn");
+		sentences.setMinMatchesToReplace(1);
 
 		//Параграфы
 		SemanticLevel paragraphs = new SemanticLevel("Paragraph", true);
